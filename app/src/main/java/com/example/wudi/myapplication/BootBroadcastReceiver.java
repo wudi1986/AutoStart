@@ -14,9 +14,12 @@ public class BootBroadcastReceiver extends BroadcastReceiver{
     @Override
     public void onReceive(Context context, Intent intent) {
 
-//        if (intent.getAction().equals(ACTION)){
-            Intent sayHelloIntent=new Intent(context,SpriteIsRunService.class);
-            context.startService(sayHelloIntent);
-//        }
+        if (intent.getAction().equals(ACTION)) {
+            Intent ootStartIntent = new Intent(context, MainActivity.class);
+            ootStartIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(ootStartIntent);
+        }
+
+
     }
 }

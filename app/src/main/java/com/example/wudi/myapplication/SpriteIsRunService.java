@@ -26,7 +26,6 @@ public class SpriteIsRunService extends Service{
             @Override
             public void run() {
                 while(true){
-
                     ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
                     List<ActivityManager.RunningTaskInfo> list = am.getRunningTasks(100);
                     for (ActivityManager.RunningTaskInfo info : list) {
@@ -36,24 +35,21 @@ public class SpriteIsRunService extends Service{
                             break;
                         }
                     }
+                    Log.i(TAG, "run: isAppRunni ====== "+isAppRunning);
                     if (!isAppRunning){
                         Intent Intent = new Intent();
                         Intent.setClassName("com.touchsprite.android", "com.touchsprite.android.activity.Activity_Login");
                         startActivity(Intent);
                     }
 
-
                     try {
-                        Thread.sleep(60*60*1000);
+                        Thread.sleep(30*60*1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
-
             }
         }).start();
-
-
 
         return super.onStartCommand(intent, flags, startId);
     }

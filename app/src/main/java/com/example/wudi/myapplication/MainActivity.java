@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i(TAG, "onCreate: onCreateonCreateonCreate");
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -26,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent.setClassName("com.touchsprite.android", "com.touchsprite.android.activity.Activity_Login");
                 startActivity(Intent);
 
+
+
                 Intent localIntent = new Intent();
-                localIntent.setClass(MainActivity.this, SpriteIsRunService.class); //销毁时重新启动Service
+                localIntent.setClass(MainActivity.this, SpriteIsRunService.class);
                 startService(localIntent);
 
 //                Log.d(TAG, "reboot");
